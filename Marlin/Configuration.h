@@ -1,27 +1,27 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
-// This configuration file contains the basic settings.
-// Advanced settings can be found in Configuration_adv.h
-// BASIC SETTINGS: select your board type, temperature sensor type, axis scaling, and endstop configuration
+// Este arquivo de configuração contém as configurações básicas.
+// Configurações avançadas podem ser encontradas em Configuration_adv.h
+// CONFIGURAÇÕES BÁSICAS: selecione o tipo de placa, tipo de sensor de temperatura, escala de eixo e configuração do fim de curso
 
-// User-specified
-//info of this build to display in [Pronterface, etc] terminal window during
-// startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
-// build by the user have been successfully uploaded into firmware.
-#define STRING_VERSION_CONFIG_H __DATE__ " " __TIME__ // build date and time
-#define STRING_CONFIG_H_AUTHOR "(jcrocholl, Mini Kossel)" // Who made the changes.
+// Especificado pelo usuário
+// Info desta compilação para exibir na janela de terminal [Pronterface, etc] durante a inicialização.
+// Implementação de uma idéia pelo Prof Braino para informar ao usuário que todas as alterações feitas a esta
+// compilação pelo usuário foram carregadas com êxito no firmware.
+#define STRING_VERSION_CONFIG_H __DATE__ " " __TIME__ // Data e hora de compilação
+#define STRING_CONFIG_H_AUTHOR "(jcrocholl, Mini Kossel)" // Quem fez as mudanças.
 
-// SERIAL_PORT selects which serial port should be used for communication with the host.
-// This allows the connection of wireless adapters (for instance) to non-default port pins.
-// Serial port 0 is still used by the Arduino bootloader regardless of this setting.
+// SERIAL_PORT seleciona qual porta serial deve ser usada para comunicação com o host.
+// Isso permite a conexão de adaptadores sem fio (por exemplo) aos pinos de porta não padrão.
+// A porta serial 0 ainda é usada pelo carregador de inicialização Arduino independentemente desta configuração.
 #define SERIAL_PORT 0
 
-// This determines the communication speed of the printer
+// Isso determina a velocidade de comunicação da impressora
 #define BAUDRATE 250000
 //#define BAUDRATE 115200
 
-//// The following define selects which electronics board you have. Please choose the one that matches your setup
+//// O seguinte DEFINE seleciona que placa eletrônica você tem. Escolha a que corresponda à sua configuração
 // 10 = Gen7 custom (Alfons3 Version) "https://github.com/Alfons3/Generation_7_Electronics"
 // 11 = Gen7 v1.1, v1.2 = 11
 // 12 = Gen7 v1.3
@@ -59,15 +59,15 @@
 #define MOTHERBOARD 33
 #endif
 
-// Define this to set a custom name for your generic Mendel,
+// Defina isso para definir um nome personalizado para o seu genérico Mendel
 #define CUSTOM_MENDEL_NAME "ATOM_Neutron.01"
 
-// This defines the number of extruders
+// Isto define o número de extrusoras
 #define EXTRUDERS 2
 
-//// The following define selects which power supply you have. Please choose the one that matches your setup
+//// O seguinte DEFINE seleciona que fonte de alimentação você tem. Escolha a que corresponda à sua configuração
 // 1 = ATX
-// 2 = X-Box 360 203Watts (the blue wire connected to PS_ON and the red wire to VCC)
+// 2 = X-Box 360 203Watts (O fio azul conectado ao PS_ON e o fio vermelho ao VCC)
 
 #define POWER_SUPPLY 1
 
@@ -75,18 +75,18 @@
 //===========================================================================
 //============================== Delta Settings =============================
 //===========================================================================
-// Enable DELTA kinematics
+// Ativar cinemática DELTA
 #define DELTA
 
-// Make delta curves from many straight lines (linear interpolation).
+// Faça curvas delta a partir de muitas linhas retas (interpolação linear).
 // This is a trade-off between visible corners (not enough segments)
 // and processor overload (too many expensive sqrt calls).
 #define DELTA_SEGMENTS_PER_SECOND 120
 
-// Center-to-center distance of the holes in the diagonal push rods.
+// Distância centro a centro dos furos nas varetas diagonais.
 #define DELTA_DIAGONAL_ROD 150*(29.35/30)
 
-// Horizontal offset from middle of printer to smooth rod center.
+// Deslocamento horizontal do meio da impressora para o centro da haste lisa.
 #define DELTA_SMOOTH_ROD_OFFSET 125.2
 
 // Horizontal offset of the universal joints on the end effector.
