@@ -1,27 +1,27 @@
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
-// This configuration file contains the basic settings.
-// Advanced settings can be found in Configuration_adv.h
-// BASIC SETTINGS: select your board type, temperature sensor type, axis scaling, and endstop configuration
+// Este arquivo de configuração contém as configurações básicas.
+// Configurações avançadas podem ser encontradas em Configuration_adv.h
+// CONFIGURAÇÕES BÁSICAS: selecione o tipo de placa, tipo de sensor de temperatura, escala de eixo e configuração do fim de curso
 
-// User-specified
-//info of this build to display in [Pronterface, etc] terminal window during
-// startup. Implementation of an idea by Prof Braino to inform user that any changes made to this
-// build by the user have been successfully uploaded into firmware.
-#define STRING_VERSION_CONFIG_H __DATE__ " " __TIME__ // build date and time
-#define STRING_CONFIG_H_AUTHOR "(jcrocholl, Mini Kossel)" // Who made the changes.
+// Especificado pelo usuário
+// Info desta compilação para exibir na janela de terminal [Pronterface, etc] durante a inicialização.
+// Implementação de uma idéia pelo Prof Braino para informar ao usuário que todas as alterações feitas a esta
+// compilação pelo usuário foram carregadas com êxito no firmware.
+#define STRING_VERSION_CONFIG_H __DATE__ " " __TIME__ // Data e hora de compilação
+#define STRING_CONFIG_H_AUTHOR "(jcrocholl, Mini Kossel)" // Quem fez as mudanças.
 
-// SERIAL_PORT selects which serial port should be used for communication with the host.
-// This allows the connection of wireless adapters (for instance) to non-default port pins.
-// Serial port 0 is still used by the Arduino bootloader regardless of this setting.
+// SERIAL_PORT seleciona qual porta serial deve ser usada para comunicação com o host.
+// Isso permite a conexão de adaptadores sem fio (por exemplo) aos pinos de porta não padrão.
+// A porta serial 0 ainda é usada pelo carregador de inicialização Arduino independentemente desta configuração.
 #define SERIAL_PORT 0
 
-// This determines the communication speed of the printer
+// Isso determina a velocidade de comunicação da impressora
 #define BAUDRATE 250000
 //#define BAUDRATE 115200
 
-//// The following define selects which electronics board you have. Please choose the one that matches your setup
+//// O seguinte DEFINE seleciona que placa eletrônica você tem. Escolha a que corresponda à sua configuração
 // 10 = Gen7 custom (Alfons3 Version) "https://github.com/Alfons3/Generation_7_Electronics"
 // 11 = Gen7 v1.1, v1.2 = 11
 // 12 = Gen7 v1.3
@@ -59,15 +59,15 @@
 #define MOTHERBOARD 33
 #endif
 
-// Define this to set a custom name for your generic Mendel,
+// Defina isso para definir um nome personalizado para o seu genérico Mendel
 #define CUSTOM_MENDEL_NAME "ATOM_Neutron.01"
 
-// This defines the number of extruders
+// Isto define o número de extrusoras
 #define EXTRUDERS 2
 
-//// The following define selects which power supply you have. Please choose the one that matches your setup
+//// O seguinte DEFINE seleciona que fonte de alimentação você tem. Escolha a que corresponda à sua configuração
 // 1 = ATX
-// 2 = X-Box 360 203Watts (the blue wire connected to PS_ON and the red wire to VCC)
+// 2 = X-Box 360 203Watts (O fio azul conectado ao PS_ON e o fio vermelho ao VCC)
 
 #define POWER_SUPPLY 1
 
@@ -75,77 +75,77 @@
 //===========================================================================
 //============================== Delta Settings =============================
 //===========================================================================
-// Enable DELTA kinematics
+// Ativar cinemática DELTA
 #define DELTA
 
-// Make delta curves from many straight lines (linear interpolation).
+// Faça curvas delta a partir de muitas linhas retas (interpolação linear).
 // This is a trade-off between visible corners (not enough segments)
 // and processor overload (too many expensive sqrt calls).
 #define DELTA_SEGMENTS_PER_SECOND 120
 
-// Center-to-center distance of the holes in the diagonal push rods.
+// Distância centro a centro dos furos nas varetas diagonais.
 #define DELTA_DIAGONAL_ROD 150*(29.35/30)
 
-// Horizontal offset from middle of printer to smooth rod center.
+// Deslocamento horizontal do meio da impressora para o centro da haste lisa.
 #define DELTA_SMOOTH_ROD_OFFSET 125.2
 
-// Horizontal offset of the universal joints on the end effector.
+// Deslocamento horizontal das juntas universais no efector final.
 #define DELTA_EFFECTOR_OFFSET 31.3
 
-// Horizontal offset of the universal joints on the carriages.
+// Deslocamento horizontal das juntas universais nas carruagens.
 #define DELTA_CARRIAGE_OFFSET 11.3
-// Effective horizontal distance bridged by diagonal push rods.
+// Distância horizontal efetiva com pontes diagonais..
 #define DELTA_RADIUS (DELTA_SMOOTH_ROD_OFFSET-DELTA_EFFECTOR_OFFSET-DELTA_CARRIAGE_OFFSET)
 
-// Effective X/Y positions of the three vertical towers.
+// Posições efetivas X / Y das três torres verticais.
 #define SIN_60 0.8660254037844386
 #define COS_60 0.5
-#define DELTA_TOWER1_X -SIN_60*DELTA_RADIUS // front left tower
+#define DELTA_TOWER1_X -SIN_60*DELTA_RADIUS // Torre da frente esquerda
 #define DELTA_TOWER1_Y -COS_60*DELTA_RADIUS
-#define DELTA_TOWER2_X SIN_60*DELTA_RADIUS // front right tower
+#define DELTA_TOWER2_X SIN_60*DELTA_RADIUS // torre frontal direita
 #define DELTA_TOWER2_Y -COS_60*DELTA_RADIUS
-#define DELTA_TOWER3_X 0.0 // back middle tower
+#define DELTA_TOWER3_X 0.0 // Torre média traseira
 #define DELTA_TOWER3_Y DELTA_RADIUS
 
-// Diagonal rod squared
+// Haste diagonal ao quadrado
 #define DELTA_DIAGONAL_ROD_2 pow(DELTA_DIAGONAL_ROD,2)
 
 //===========================================================================
-//=============================Thermal Settings  ============================
+//==========================Configurações Térmicas  =========================
 //===========================================================================
 //
-//--NORMAL IS 4.7kohm PULLUP!-- 1kohm pullup can be used on hotend sensor, using correct resistor and table
+//--NORMAL É 4.7kohm PULLUP! - 1kohm pullup pode ser usado no sensor hotend, usando resistor correto e tabela
 //
-//// Temperature sensor settings:
-// -2 is thermocouple with MAX6675 (only for sensor 0)
-// -1 is thermocouple with AD595
-// 0 is not used
-// 1 is 100k thermistor - best choice for EPCOS 100k (4.7k pullup)
-// 2 is 200k thermistor - ATC Semitec 204GT-2 (4.7k pullup)
-// 3 is mendel-parts thermistor (4.7k pullup)
-// 4 is 10k thermistor !! do not use it for a hotend. It gives bad resolution at high temp. !!
-// 5 is 100K thermistor - ATC Semitec 104GT-2
-// 6 is 100k EPCOS - Not as accurate as table 1 (created using a fluke thermocouple) (4.7k pullup)
-// 7 is 100k Honeywell thermistor 135-104LAG-J01 (4.7k pullup)
-// 71 is 100k Honeywell thermistor 135-104LAF-J01 (4.7k pullup)
-// 8 is 100k 0603 SMD Vishay NTCS0603E3104FXT (4.7k pullup)
-// 9 is 100k GE Sensing AL03006-58.2K-97-G1 (4.7k pullup)
-// 10 is 100k RS thermistor 198-961 (4.7k pullup)
-// 11 is 100K MF58 thermistor (4.7k pullup)
-// 60 is 100k Maker's Tool Works Kapton Bed Thermister
+//// Configurações do sensor de temperatura:
+// -2 é o termopar com MAX6675 (somente para o sensor 0)
+// -1 é termopar com AD595
+// 0 não é usado
+// 1 é 100k termistor - melhor escolha para EPCOS 100k (4.7k pullup)
+// 2 é termistor de 200k - ATC Semitec 204GT-2 (4.7k pullup)
+// 3 é mendel-parts termistor (4.7k pullup)
+// 4 é termistor 10k !! Não usá-lo para um hotend. Dá má resolução em alta temperatura. !!
+// 5 é 100K termistor - ATC Semitec 104GT-2
+// 6 é 100k EPCOS - Não é tão preciso quanto a tabela 1 (criado usando um termopar do fluke) (4.7k pullup)
+// 7 é 100k Honeywell termistor 135-104LAG-J01 (4.7k pullup)
+// 71 é 100k Thermistor de Honeywell 135-104LAF-J01 (4.7k pullup)
+// 8 é 100k 0603 SMD Vishay NTCS0603E3104FXT (4.7k pullup)
+// 9 é 100k GE Sensing AL03006-58.2K-97-G1 (4.7k pullup)
+// 10 é 100k RS termistor 198-961 (4.7k pullup)
+// 11 é 100K MF58 termistor (4.7k pullup)
+// 60 é 100k Ferramenta do Fabricante Funciona Kapton Bed Thermister
 //
-//    1k ohm pullup tables - This is not normal, you would have to have changed out your 4.7k for 1k
-//                          (but gives greater accuracy and more stable PID)
-// 51 is 100k thermistor - EPCOS (1k pullup)
-// 52 is 200k thermistor - ATC Semitec 204GT-2 (1k pullup)
-// 55 is 100k thermistor - ATC Semitec 104GT-2 (Used in ParCan) (1k pullup)
+// 1k ohm pullup tables - Isso não é normal, você teria que ter mudado o seu 4.7k para 1k
+//                          (mas dá maior precisão e PID mais estável)
+// 51 é 100k termistor - EPCOS (1k pullup)
+// 52 é termistor de 200k - ATC Semitec 204GT-2 (1k pullup)
+// 55 é 100k termistor - ATC Semitec 104GT-2 (Usado em ParCan) (1k pullup)
 
 #define TEMP_SENSOR_0 5
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_BED 1
 
-// This makes temp sensor 1 a redundant sensor for sensor 0. If the temperatures difference between these sensors is to high the print will be aborted.
+// Isso faz com que o sensor de temperatura 1 seja um sensor redundante para o sensor 0. Se a diferença de temperatura entre esses sensores for alta, a impressão será abortada.
 //#define TEMP_SENSOR_1_AS_REDUNDANT
 #define MAX_REDUNDANT_TEMP_SENSOR_DIFF 10
 
