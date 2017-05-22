@@ -89,63 +89,63 @@
 // Deslocamento horizontal do meio da impressora para o centro da haste lisa.
 #define DELTA_SMOOTH_ROD_OFFSET 125.2
 
-// Horizontal offset of the universal joints on the end effector.
+// Deslocamento horizontal das juntas universais no efector final.
 #define DELTA_EFFECTOR_OFFSET 31.3
 
-// Horizontal offset of the universal joints on the carriages.
+// Deslocamento horizontal das juntas universais nas carruagens.
 #define DELTA_CARRIAGE_OFFSET 11.3
-// Effective horizontal distance bridged by diagonal push rods.
+// Distância horizontal efetiva com pontes diagonais..
 #define DELTA_RADIUS (DELTA_SMOOTH_ROD_OFFSET-DELTA_EFFECTOR_OFFSET-DELTA_CARRIAGE_OFFSET)
 
-// Effective X/Y positions of the three vertical towers.
+// Posições efetivas X / Y das três torres verticais.
 #define SIN_60 0.8660254037844386
 #define COS_60 0.5
-#define DELTA_TOWER1_X -SIN_60*DELTA_RADIUS // front left tower
+#define DELTA_TOWER1_X -SIN_60*DELTA_RADIUS // Torre da frente esquerda
 #define DELTA_TOWER1_Y -COS_60*DELTA_RADIUS
-#define DELTA_TOWER2_X SIN_60*DELTA_RADIUS // front right tower
+#define DELTA_TOWER2_X SIN_60*DELTA_RADIUS // torre frontal direita
 #define DELTA_TOWER2_Y -COS_60*DELTA_RADIUS
-#define DELTA_TOWER3_X 0.0 // back middle tower
+#define DELTA_TOWER3_X 0.0 // Torre média traseira
 #define DELTA_TOWER3_Y DELTA_RADIUS
 
-// Diagonal rod squared
+// Haste diagonal ao quadrado
 #define DELTA_DIAGONAL_ROD_2 pow(DELTA_DIAGONAL_ROD,2)
 
 //===========================================================================
-//=============================Thermal Settings  ============================
+//==========================Configurações Térmicas  =========================
 //===========================================================================
 //
-//--NORMAL IS 4.7kohm PULLUP!-- 1kohm pullup can be used on hotend sensor, using correct resistor and table
+//--NORMAL É 4.7kohm PULLUP! - 1kohm pullup pode ser usado no sensor hotend, usando resistor correto e tabela
 //
-//// Temperature sensor settings:
-// -2 is thermocouple with MAX6675 (only for sensor 0)
-// -1 is thermocouple with AD595
-// 0 is not used
-// 1 is 100k thermistor - best choice for EPCOS 100k (4.7k pullup)
-// 2 is 200k thermistor - ATC Semitec 204GT-2 (4.7k pullup)
-// 3 is mendel-parts thermistor (4.7k pullup)
-// 4 is 10k thermistor !! do not use it for a hotend. It gives bad resolution at high temp. !!
-// 5 is 100K thermistor - ATC Semitec 104GT-2
-// 6 is 100k EPCOS - Not as accurate as table 1 (created using a fluke thermocouple) (4.7k pullup)
-// 7 is 100k Honeywell thermistor 135-104LAG-J01 (4.7k pullup)
-// 71 is 100k Honeywell thermistor 135-104LAF-J01 (4.7k pullup)
-// 8 is 100k 0603 SMD Vishay NTCS0603E3104FXT (4.7k pullup)
-// 9 is 100k GE Sensing AL03006-58.2K-97-G1 (4.7k pullup)
-// 10 is 100k RS thermistor 198-961 (4.7k pullup)
-// 11 is 100K MF58 thermistor (4.7k pullup)
-// 60 is 100k Maker's Tool Works Kapton Bed Thermister
+//// Configurações do sensor de temperatura:
+// -2 é o termopar com MAX6675 (somente para o sensor 0)
+// -1 é termopar com AD595
+// 0 não é usado
+// 1 é 100k termistor - melhor escolha para EPCOS 100k (4.7k pullup)
+// 2 é termistor de 200k - ATC Semitec 204GT-2 (4.7k pullup)
+// 3 é mendel-parts termistor (4.7k pullup)
+// 4 é termistor 10k !! Não usá-lo para um hotend. Dá má resolução em alta temperatura. !!
+// 5 é 100K termistor - ATC Semitec 104GT-2
+// 6 é 100k EPCOS - Não é tão preciso quanto a tabela 1 (criado usando um termopar do fluke) (4.7k pullup)
+// 7 é 100k Honeywell termistor 135-104LAG-J01 (4.7k pullup)
+// 71 é 100k Thermistor de Honeywell 135-104LAF-J01 (4.7k pullup)
+// 8 é 100k 0603 SMD Vishay NTCS0603E3104FXT (4.7k pullup)
+// 9 é 100k GE Sensing AL03006-58.2K-97-G1 (4.7k pullup)
+// 10 é 100k RS termistor 198-961 (4.7k pullup)
+// 11 é 100K MF58 termistor (4.7k pullup)
+// 60 é 100k Ferramenta do Fabricante Funciona Kapton Bed Thermister
 //
-//    1k ohm pullup tables - This is not normal, you would have to have changed out your 4.7k for 1k
-//                          (but gives greater accuracy and more stable PID)
-// 51 is 100k thermistor - EPCOS (1k pullup)
-// 52 is 200k thermistor - ATC Semitec 204GT-2 (1k pullup)
-// 55 is 100k thermistor - ATC Semitec 104GT-2 (Used in ParCan) (1k pullup)
+// 1k ohm pullup tables - Isso não é normal, você teria que ter mudado o seu 4.7k para 1k
+//                          (mas dá maior precisão e PID mais estável)
+// 51 é 100k termistor - EPCOS (1k pullup)
+// 52 é termistor de 200k - ATC Semitec 204GT-2 (1k pullup)
+// 55 é 100k termistor - ATC Semitec 104GT-2 (Usado em ParCan) (1k pullup)
 
 #define TEMP_SENSOR_0 5
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_BED 1
 
-// This makes temp sensor 1 a redundant sensor for sensor 0. If the temperatures difference between these sensors is to high the print will be aborted.
+// Isso faz com que o sensor de temperatura 1 seja um sensor redundante para o sensor 0. Se a diferença de temperatura entre esses sensores for alta, a impressão será abortada.
 //#define TEMP_SENSOR_1_AS_REDUNDANT
 #define MAX_REDUNDANT_TEMP_SENSOR_DIFF 10
 
